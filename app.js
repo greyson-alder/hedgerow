@@ -4,7 +4,7 @@ const imagesJSON = window.allImages;
 
 function grabImage(index, params) {
   const selectedImage = imagesJSON["resources"][index];
-  return "https://res.cloudinary.com/dvbiqses3/image/upload/" + params + "/v" + selectedImage["version"] + "/" + selectedImage["public_id"] + ".jpg";
+  return "https://res.cloudinary.com/dvbiqses3/image/upload" + (params ? "/" : "") + params + "/v" + selectedImage["version"] + "/" + selectedImage["public_id"] + ".jpg";
 }
 
 const topHeader = document.getElementById("header");
@@ -21,6 +21,20 @@ document.addEventListener("scroll", e => {
 document.addEventListener("scroll", e => {
     const currentPosition = window.scrollY;
     const viewportHeight = window.innerHeight;
+    const bioBlock = document.getElementById("bio").getBoundingClientRect();
+    // console.log(currentPosition)
+
+    if (bioBlock.y < 67 && bioBlock.y + bioBlock.height > 97) {
+      topHeader.style = "background-color: var(--pink-med)"
+    } else {
+      topHeader.style = "";
+    }
+
+    // console.log(currentPosition)
+
+    //784
+    
+
     // console.log (viewportHeight);
     // console.log(currentPosition)
 
@@ -41,7 +55,7 @@ document.addEventListener("scroll", e => {
 })
 
 const projectImages = document.getElementsByClassName("projects__item");
-console.log(projectImages)
+console.log(projectImages);
 const loadMorePhotos = document.getElementById("load_more");
 const initialNumberPhotos = 11;
 let photoIndex = initialNumberPhotos;
@@ -53,8 +67,8 @@ for (let image of projectImages) {
   if (image.id !== "load_more") {
     image.addEventListener("click", e => {
       const imageURL = e.target.getAttribute("data-fullscale");
-      console.log(imageURL);
-      createAndAddModal(imageURL);
+      // console.log(imageURL);
+      createAndAddModal(imageURL, e.target.getBoundingClientRect());
     })
   }
 }
@@ -72,8 +86,8 @@ function createPhotoElement(index) {
 
   photoBtn.addEventListener("click", e => {
     const imageURL = e.target.getAttribute("data-fullscale");
-    console.log(imageURL);
-    createAndAddModal(imageURL);
+    // console.log(imageURL);
+    createAndAddModal(imageURL, e.target.getBoundingClientRect());
   })
 
   return photoBtn;
@@ -94,12 +108,30 @@ loadMorePhotos.addEventListener("click", addPhotoRow);
 
 const photoModal = document.getElementById("photos__modal");
 
-function createAndAddModal(imageURL) {
+// GETTING INDEX OF IMAGE TO GET WIDTH
+// const temp = "https://res.cloudinary.com/dvbiqses3/image/upload/v1667249106/IMG_20200103_173222_535_wrh3om.jpg";
+// console.log(imagesJSON["resources"])
+// const temp2 = imagesJSON["resources"].findIndex(image => image.secure_url == temp);
+// console.log(temp2)
+
+function createAndAddModal(imageURL, clickedElement) {
   const modalImage = document.createElement("img");
+  const selectImage = imagesJSON["resources"].findIndex(image => image.secure_url == imageURL);
+  // const selectImageFullWidth = imagesJSON["resources"][selectImage].width;
   modalImage.className = "modal__image";
   modalImage.setAttribute("src", imageURL);
+  modalImage.setAttribute("style", `
+    background-image: url("` + imageURL + `"), linear-gradient(rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.66));
+  `)
+  photoModal.appendChild(modalImage);
+  const imageSize = modalImage.getBoundingClientRect();
+  console.log(imageSize);
+
+  // scale(`+ clickedElement.width +`
+  // transform: translate(`+ (clickedElement.x - clickedElement.width) +`px,` + (clickedElement.y - clickedElement.height/2) +`px));
 
 
+  console.log(clickedElement);
   // NEED TO SORT BUTTON
   
   const closeModalButton = document.createElement("btn");
@@ -108,7 +140,7 @@ function createAndAddModal(imageURL) {
   closeModalButton.addEventListener("click", modalClose);
   photoModal.toggleAttribute("hidden");
 
-  photoModal.appendChild(modalImage);
+  
   photoModal.appendChild(closeModalButton);
 
 }
