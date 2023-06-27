@@ -1,28 +1,27 @@
 <?php //SETUP
-$img_url = "https://images.unsplash.com/photo-1664513291148-4ff5b1d58566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx";
 
-$allImages = file_get_contents("image_catalogue.json");
+    $img_url = "https://images.unsplash.com/photo-1664513291148-4ff5b1d58566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx";
+    $allImages = file_get_contents("image_catalogue.json");
+    $images = json_decode($allImages, true)["resources"];
+    $photosNumber = 11;
 
-$images = json_decode($allImages, true)["resources"];
+    // var_dump($images[0]["secure_url"]);
 
-$photosNumber = 11;
+    // $dir = new DirectoryIterator("D:\Libraries\Desktop\website\images/");
+    // foreach ($dir as $fileinfo) {
+    //     if (!$fileinfo->isDot()) {
+    //         array_push($images, $fileinfo->getFilename());
+    //     }
+    // }
 
-// var_dump($images[0]["secure_url"]);
+    shuffle($images);
 
-// $dir = new DirectoryIterator("D:\Libraries\Desktop\website\images/");
-// foreach ($dir as $fileinfo) {
-//     if (!$fileinfo->isDot()) {
-//         array_push($images, $fileinfo->getFilename());
-//     }
-// }
+    function grabImage($image, $params)
+    {
+        $parameters = $params ? "$params/" : "";
+        return "https://res.cloudinary.com/dvbiqses3/image/upload/" . ($parameters) . "v" . $image["version"] . "/" . $image["public_id"] . ".jpg";
+    }
 
-shuffle($images);
-
-function grabImage($image, $params)
-{
-    $parameters = $params ? "$params/" : "";
-    return "https://res.cloudinary.com/dvbiqses3/image/upload/" . ($parameters) . "v" . $image["version"] . "/" . $image["public_id"] . ".jpg";
-}
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +33,7 @@ function grabImage($image, $params)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hedgerow</title>
     <script type="module" src="app.js" defer></script>
+    <script type="module" src="modal.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -132,20 +132,6 @@ function grabImage($image, $params)
                         <button class="projects__item" id="load_more">Load more images</button>
                     </div>
                 </div>
-                <!-- <div class="projects__code">
-                    <div class="projects__info">
-                        <h2>#code</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate a lacus ac iaculis. Mauris magna lectus, condimentum a feugiat vitae, tempor at nunc.
-                        </p>
-                    </div>
-                    <div class="projects__flexboxes">
-                        <div class="projects__item"></div>
-                        <div class="projects__item"></div>
-                        <div class="projects__item"></div>
-                        <div class="projects__item"></div>
-                    </div>
-                </div> -->
             </article>
         </section>
 
