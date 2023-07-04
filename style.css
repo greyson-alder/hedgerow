@@ -7,6 +7,7 @@
     --pink-med: hsl(0, 100%, 92%);
     --pink-dark: hsl(0, 100%, 88%);
     --pink-darkest: hsl(0, 100%, 86%);
+    --pink-header: hsl(0, 30%, 40%);
     --steel-teal: #6B7F82;
     --dark-teal: #536265;
     --indigo: #3F0FB7;
@@ -66,7 +67,7 @@ body {
 
 .contentGrid {
     display: grid;
-    grid-template-rows: calc(100vh - var(--diagonal)) var(--diagonal) auto var(--diagonal) minmax(100vh, auto) var(--diagonal) 1fr;
+    grid-template-rows: calc(100vh - var(--diagonal)) var(--diagonal) auto var(--diagonal) auto var(--diagonal) 1fr;
     grid-template-columns: 1fr;
 }
 
@@ -294,7 +295,8 @@ body {
 }
 
 #photos__container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: left;
@@ -309,6 +311,7 @@ body {
     overflow: hidden;
     border: 4px white solid;
     padding: 8px;
+    justify-self: center;
 }
 
 .project__image {
@@ -365,6 +368,10 @@ body {
     width: 100%;
 }
 
+.contact__content ul {
+    list-style: none;
+}
+
 .bottom__toTop {
     padding: 1rem;
     margin-top: 1rem;
@@ -397,10 +404,33 @@ body {
     transition: 1s;
 }
 
+#modal__inner {
+    max-height: 80vh;
+    height: 100%;
+    /* position: relative; */
+    display: flex;
+    justify-content: flex-start;
+}
+
 .closeModalBtn {
     height: 40px;
     width: 40px;
     color: black;
-    position: relative;
-    top: 0;
+    /* position: fixed; */
+    background-color: rgba(255,255,255,0.5);
+    border: 2px solid grey;
+    margin: 1rem;
+}
+
+.externalLink a {
+    color: var(--pink-header);
+    font-weight: bold;
+}
+
+.margin-top {
+    margin-top: 3%;
+}
+
+.externalLink {
+    margin-top: 0.5rem;
 }

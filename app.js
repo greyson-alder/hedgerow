@@ -10,9 +10,9 @@ function grabImage(index, params) {
 // HEADER SCROLL COLOUR CHANGE
 
 const topHeader = document.getElementById("header");
-const bioBlock = document.getElementById("bio").getBoundingClientRect();
+const bioBlock = document.getElementById("bio");
 
-document.addEventListener("scroll", e => {
+document.addEventListener("scroll", () => {
     const currentPosition = window.scrollY;
     if (currentPosition != 0) {
         topHeader.setAttribute("data--detached", "true");
@@ -21,9 +21,12 @@ document.addEventListener("scroll", e => {
     }
 })
 
+//
+
 document.addEventListener("scroll", () => {
-    if (bioBlock.y < 67 && bioBlock.y + bioBlock.height > 97) {
-      topHeader.style = "background-color: var(--pink-med)"
+  let inner_bioBlock = bioBlock.getBoundingClientRect();
+    if (inner_bioBlock.y < 67 && inner_bioBlock.y + inner_bioBlock.height > 97) {
+      topHeader.style = "background-color: var(--pink-med)";
     } else {
       topHeader.style = "";
     }
@@ -36,8 +39,9 @@ const projectImages = document.getElementsByClassName("projects__item");
 const loadMorePhotos = document.getElementById("load_more");
 const photoContainer = document.getElementById("photos__container");
 const photoModal = document.getElementById("photos__modal");
+const modalInner = document.getElementById("modal__inner");
 
-const initialNumberPhotos = 11;
+const initialNumberPhotos = document.getElementsByClassName("project__image").length;
 let photoIndex = initialNumberPhotos;
 
 // -- MODAL FUNCTIONALITY FOR INITIAL IMAGES
@@ -74,7 +78,7 @@ function createPhotoElement(index) {
 }
 
 function addPhotoRow() {
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 5; i++) {
     if (photoIndex < imagesJSON["resources"].length) {
       photoContainer.appendChild(createPhotoElement(photoIndex))
       photoIndex += 1;
@@ -97,27 +101,27 @@ function createAndAddModal(imageURL, clickedElement) {
   modalImage.setAttribute("style", `
     background-image: url("` + imageURL + `"), linear-gradient(rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.66));
   `)
-  photoModal.appendChild(modalImage);
+  modalInner.appendChild(modalImage);
   const imageSize = modalImage.getBoundingClientRect();
-  console.log(imageSize);
+  // console.log(imageSize);
 
   // scale(`+ clickedElement.width +`
   // transform: translate(`+ (clickedElement.x - clickedElement.width) +`px,` + (clickedElement.y - clickedElement.height/2) +`px));
   
-  const closeModalButton = document.createElement("btn");
-  closeModalButton.innerText = "X";
+  const closeModalButton = document.createElement("button");
+  closeModalButton.innerText = "close";
   closeModalButton.className = "closeModalBtn";
   closeModalButton.addEventListener("click", modalClose);
   photoModal.toggleAttribute("hidden");
 
   
-  photoModal.appendChild(closeModalButton);
+  modalInner.appendChild(closeModalButton);
 
 }
 
 function modalClose() {
-  photoModal.innerHTML = "";
   photoModal.toggleAttribute("hidden");
+  modalInner.innerHTML = "";
 }
 
 photoModal.addEventListener("click", modalClose)

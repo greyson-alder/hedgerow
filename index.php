@@ -3,7 +3,7 @@
     $img_url = "https://images.unsplash.com/photo-1664513291148-4ff5b1d58566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx";
     $allImages = file_get_contents("image_catalogue.json");
     $images = json_decode($allImages, true)["resources"];
-    $photosNumber = 11;
+    $photosNumber = 9;
 
     // var_dump($images[0]["secure_url"]);
 
@@ -33,7 +33,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hedgerow</title>
     <script type="module" src="app.js" defer></script>
-    <script type="module" src="modal.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +52,7 @@
         <nav class="header__nav">
             <ul class="nav__list">
                 <li class="nav__item"><a href="#bio">Me</a></li>
-                <li class="nav__item"><a href="#projects">Photos</a></li>
+                <li class="nav__item"><a href="#projects">Gallery</a></li>
                 <li class="nav__item"><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -101,21 +100,34 @@
                     <div class="bio__right">
                         <h2>Hello!</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate a lacus ac iaculis. Mauris magna lectus, condimentum a feugiat vitae, tempor at nunc. Pellentesque faucibus, diam et mattis pharetra, mi quam elementum neque, et dictum purus arcu eget justo. Donec sollicitudin ornare mauris ac cursus. Aenean lacus tellus, elementum vel est ut, lobortis ornare enim. Ut feugiat sem eu venenatis placerat. Vestibulum fringilla mauris et tortor euismod tristique. Integer sagittis enim velit, sit amet congue ipsum consequat sit amet. Integer quis cursus arcu.
+                            Welcome to my site Hedgerow. My name is Greyson Alder and I built this site, as a home for my photography, using PHP and JavaScript. Below is an interactive gallery should you wish to see any images in full resolution.
                         </p>
+                        <h3>Proficiencies:</h3>
+                        <ul>
+                            <li>HTML, CSS & JavaScript</li>
+                            <li>React & NextJS</li>
+                            <li>PHP</li>
+                            <li>Java, Spring (Boot)</li>
+                            <li>SQL, postgreSQL</li>
+                            <li>C# (from experience with the Godot & Unity game engines)</li>
+                            <li>Pokémon</li>
+                            <li>Hugs</li>
+                        </ul>
                     </div>
                 </article>
             </div>
         </section>
 
+
+        <!-- bug: clicking the outer bounds of the images doesn't grab the image-->
         <section id="projects">
             <article class="projects__content content">
                 <div class="projects__photos">
                     <div class="projects__info">
-                        <h2>Photos</h2>
-                        <p>
+                        <h2>Gallery</h2>
+                        <!-- <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate a lacus ac iaculis. Mauris magna lectus, condimentum a feugiat vitae, tempor at nunc.
-                        </p>
+                        </p> -->
                     </div>
                     <div id="photos__container">
                         <?php
@@ -139,10 +151,22 @@
         <section id="contact">
             <div class="diagonal">
                 <div class="contact__content content">
-                    <h2>Contact</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate a lacus ac iaculis. Mauris magna lectus, condimentum a feugiat vitae, tempor at nunc. Pellentesque faucibus, diam et mattis pharetra, mi quam elementum neque, et dictum purus arcu eget justo. Donec sollicitudin ornare mauris ac cursus. Aenean lacus tellus, elementum vel est ut, lobortis ornare enim. Ut feugiat sem eu venenatis placerat.
-                    </p>
+                    <h2>Why <i>"Hedgerow"?</i></h2>
+                    <p>Having grown up in the Highlands in Scotland surrounded by environmental initiatives like the Cairngorn National Park Junior Ranger program and EcoSchools, the natural environment is at the core of everything I do. Did you know that the vast majority of British birds find their home in hedgerows about the country and yet, largely due to the industrialisation of farming across the last century, we are rapidly losing our hedges?</p>
+                    <h2 class="margin-top">Quick note on my name</h2>
+                    <p>I have recently moved away from using my given name <b>Iain Sandison</b> purely due to personal preference. Nothing else has changed and I'm still close with my family</p>
+                    <h2 class="margin-top">Contact & Additional Links</h2>
+                    <ul class="contact__otherProjects">
+                        <li class="externalLink"><a href="https://codepen.io/iain-sandison">CodePen</a></li>
+                        <li class="externalLink"><a href="https://github.com/greyson-alder">GitHub</a></li>
+                    </ul>
+                    <h3 class="margin-top">
+                        The easiest way to contact me is via email or LinkedIn:
+                    </h3>
+                    <ul class="contact__links">
+                        <li class="contact__email externalLink"><a href="mailto:iain.sandison.mousa@gmail.com">iain.sandison.mousa@gmail.com</a></li>
+                        <li class="contact__linkedIn externalLink"><a href="https://www.linkedin.com/in/iain-sandison/">LinkedIn</a></li>
+                    </ul>
                     <a href="#" class="bottom__toTop">Back to top</a>
                 </div>
             </div>
@@ -152,6 +176,9 @@
 
 
     <section id="photos__modal" hidden>
+        <div id="modal__inner">
+
+        </div>
         <!-- <img class="modal__image" src="https://res.cloudinary.com/dvbiqses3/image/upload//v1667249092/IMG_20181126_120354_381_dtv0mb.jpg"/> -->
     </section>
 </body>
