@@ -48,9 +48,9 @@ let photoIndex = initialNumberPhotos;
 
 for (let image of projectImages) {
   if (image.id !== "load_more") {
-    image.addEventListener("click", e => {
-      const imageURL = e.target.getAttribute("data-fullscale");
-      createAndAddModal(imageURL, e.target.getBoundingClientRect());
+    image.addEventListener("click", () => {
+      const imageURL = image.getAttribute("data-fullscale");
+      createAndAddModal(imageURL, image.getBoundingClientRect());
     })
   }
 }
@@ -64,14 +64,14 @@ function createPhotoElement(index) {
   const photoImage = document.createElement("img");
   photoImage.className = "project__image";
   photoImage.setAttribute("src", grabImage(index, "w_320"));
-  photoImage.setAttribute("data-fullscale", grabImage(index, ""));
+  photoBtn.setAttribute("data-fullscale", grabImage(index, ""));
 
   photoBtn.appendChild(photoImage);
 
   photoBtn.addEventListener("click", e => {
-    const imageURL = e.target.getAttribute("data-fullscale");
+    const imageURL = photoBtn.getAttribute("data-fullscale");
     // console.log(imageURL);
-    createAndAddModal(imageURL, e.target.getBoundingClientRect());
+    createAndAddModal(imageURL, photoBtn.getBoundingClientRect());
   })
 
   return photoBtn;
@@ -120,8 +120,9 @@ function createAndAddModal(imageURL, clickedElement) {
 }
 
 function modalClose() {
-  photoModal.toggleAttribute("hidden");
+  photoModal.setAttribute("hidden", null);
   modalInner.innerHTML = "";
+  console.log(photoModal)
 }
 
 photoModal.addEventListener("click", modalClose)

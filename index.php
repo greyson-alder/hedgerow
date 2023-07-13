@@ -1,7 +1,7 @@
 <?php //SETUP
 
     $img_url = "https://images.unsplash.com/photo-1664513291148-4ff5b1d58566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx";
-    $allImages = file_get_contents("image_catalogue.json");
+    $allImages = file_get_contents("updated_images.json");
     $images = json_decode($allImages, true)["resources"];
     $photosNumber = 9;
 
@@ -100,7 +100,7 @@
                     <div class="bio__right">
                         <h2>Hello!</h2>
                         <p>
-                            Welcome to my site Hedgerow. My name is Greyson Alder and I built this site, as a home for my photography, using PHP and JavaScript. Below is an interactive gallery should you wish to see any images in full resolution.
+                            Welcome to my site Hedgerow. My name is <b>Greyson Alder</b> and I built this site as a home for my photography, using PHP and JavaScript. Below is an interactive gallery should you wish to see any images in full resolution.
                         </p>
                         <h3>Proficiencies:</h3>
                         <ul>
@@ -109,7 +109,7 @@
                             <li>PHP</li>
                             <li>Java, Spring (Boot)</li>
                             <li>SQL, postgreSQL</li>
-                            <li>C# (from experience with the Godot & Unity game engines)</li>
+                            <li>C# (with Godot & Unity)</li>
                             <li>Pokémon</li>
                             <li>Hugs</li>
                         </ul>
@@ -119,25 +119,20 @@
         </section>
 
 
-        <!-- bug: clicking the outer bounds of the images doesn't grab the image-->
         <section id="projects">
             <article class="projects__content content">
                 <div class="projects__photos">
                     <div class="projects__info">
                         <h2>Gallery</h2>
-                        <!-- <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate a lacus ac iaculis. Mauris magna lectus, condimentum a feugiat vitae, tempor at nunc.
-                        </p> -->
                     </div>
                     <div id="photos__container">
                         <?php
                         for ($i = 0; $i < $photosNumber; $i++) {
                             echo
-                            '<button class="projects__item">
+                            '<button class="projects__item" data-fullscale="' . grabImage($images[$i], "") . '">
                                 <img 
                                     class="project__image" 
                                     src="' . grabImage($images[$i], "w_320") . '" 
-                                    data-fullscale="' . grabImage($images[$i], "") . '"
                                 />
                             </button>';
                         } ?>
@@ -152,7 +147,7 @@
             <div class="diagonal">
                 <div class="contact__content content">
                     <h2>Why <i>"Hedgerow"?</i></h2>
-                    <p>Having grown up in the Highlands in Scotland surrounded by environmental initiatives like the Cairngorn National Park Junior Ranger program and EcoSchools, the natural environment is at the core of everything I do. Did you know that the vast majority of British birds find their home in hedgerows about the country and yet, largely due to the industrialisation of farming across the last century, we are rapidly losing our hedges?</p>
+                    <p>Having grown up in the Highlands in Scotland surrounded by environmental initiatives like the Cairngorn National Park Junior Ranger program and EcoSchools, the natural environment is at the core of everything I do.<br/>Did you know that the vast majority of British birds find their home in hedgerows about the country and yet, largely due to the industrialisation of farming across the last century, we are rapidly losing our hedges?</p>
                     <h2 class="margin-top">Quick note on my name</h2>
                     <p>I have recently moved away from using my given name <b>Iain Sandison</b> purely due to personal preference. Nothing else has changed and I'm still close with my family</p>
                     <h2 class="margin-top">Contact & Additional Links</h2>
