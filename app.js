@@ -2,6 +2,8 @@
 
 const imagesJSON = window.allImages;
 
+console.log(imagesJSON["resources"].length)
+
 function grabImage(index, params) {
   const selectedImage = imagesJSON["resources"][index];
   return "https://res.cloudinary.com/dvbiqses3/image/upload" + (params ? "/" : "") + params + "/v" + selectedImage["version"] + "/" + selectedImage["public_id"] + ".jpg";
@@ -11,6 +13,7 @@ function grabImage(index, params) {
 
 const topHeader = document.getElementById("header");
 const bioBlock = document.getElementById("bio");
+const plantsBlock = document.getElementById("plants");
 
 document.addEventListener("scroll", () => {
     const currentPosition = window.scrollY;
@@ -25,7 +28,12 @@ document.addEventListener("scroll", () => {
 
 document.addEventListener("scroll", () => {
   let inner_bioBlock = bioBlock.getBoundingClientRect();
-    if (inner_bioBlock.y < 67 && inner_bioBlock.y + inner_bioBlock.height > 97) {
+  let inner_plantsBlock = plantsBlock.getBoundingClientRect();
+    if (
+          (inner_bioBlock.y < 67 && inner_bioBlock.y + inner_bioBlock.height > 97) 
+          || 
+          (inner_plantsBlock.y < 67 && inner_plantsBlock.y + inner_plantsBlock.height > 97)
+        ) {
       topHeader.style = "background-color: var(--pink-med)";
     } else {
       topHeader.style = "";
@@ -82,8 +90,10 @@ function addPhotoRow() {
     if (photoIndex < imagesJSON["resources"].length) {
       photoContainer.appendChild(createPhotoElement(photoIndex))
       photoIndex += 1;
-    } else {
-      loadMorePhotos.toggleAttribute("hidden")
+      if (photoIndex == imagesJSON["resources"].length) {
+        loadMorePhotos.toggleAttribute("hidden")
+        break
+      }
     }
   }
 }
@@ -126,3 +136,19 @@ function modalClose() {
 }
 
 photoModal.addEventListener("click", modalClose)
+
+// BACKGROUND FLOWERS
+
+// const backgroundFlowers = document.getElementById("backgroundFlowers");
+// const websiteHeight = document.body.getBoundingClientRect();
+// console.log(websiteHeight);
+// backgroundFlowers.setAttribute("style", `bottom: calc(${websiteHeight.height}px - 100vh)`);
+
+const monsteraBtn = document.getElementById("monstera");
+const hedgehog = document.getElementById("hedgehog");
+const hedgehogContainer = document.getElementById("hedgehog__container");
+
+monsteraBtn.addEventListener("click", ()=>{
+  hedgehog.setAttribute("style", "animation-play-state: running");
+  hedgehogContainer.setAttribute("style", "animation-play-state: running");
+})

@@ -65,9 +65,9 @@ body {
     width: 100%;
 }
 
-.contentGrid {
+#contentGrid {
     display: grid;
-    grid-template-rows: calc(100vh - var(--diagonal)) var(--diagonal) auto var(--diagonal) auto var(--diagonal) 1fr;
+    grid-template-rows: calc(100vh - var(--diagonal)) var(--diagonal) auto var(--diagonal) auto var(--diagonal) auto var(--diagonal) 1fr;
     grid-template-columns: 1fr;
 }
 
@@ -121,11 +121,25 @@ body {
 #primary {
     height: 100vh;
     width: 100%;
+    
+    grid-column: 1/3;
+
+    filter: drop-shadow(0 2px 2px rgba(150, 150, 150, 0.5));
+    z-index: 5;
+}
+
+#primary .bottom__diagonal {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--pink);
-    grid-column: 1/3;
+}
+
+.bottom__diagonal {
+    height: 100%;
+    width: 100%;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(--diagonal)));
 }
 
 #imageGrid__container {
@@ -239,11 +253,14 @@ body {
     scroll-margin-top: 66px;
     grid-column: 1;
     grid-row: 2/5;
+    filter: drop-shadow(0 2px 2px rgba(150, 150, 150, 0.5));
+    z-index: 4;
+    
+    /* 0 2px rgba(150, 150, 150, 0.5) */
 }
 
-#bio .diagonal {
+#bio .bottom__diagonal {
     background-color: var(--pink-med);
-    clip-path: polygon(0 0, 100% var(--diagonal), 100% 100%, 0 calc(100% - var(--diagonal)));
 }
 
 .bio__content {
@@ -265,6 +282,14 @@ body {
 .bio__left > img {
     width: 100%;
     padding: 8%;
+}
+
+.bio__left > img::before {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    content: "";
+    position: absolute;
 }
 
 .bio__right {
@@ -304,10 +329,16 @@ body {
 /* ---Projects--------------------- */
 
 #projects {
-    background-color: var(--pink);
+    /* background-color: var(--pink); */
     scroll-margin-top: 66px;
     grid-column: 1;
-    grid-row: 4/6;
+    grid-row: 4/7;
+    z-index: 3;
+    filter: drop-shadow(0 2px 2px rgba(150, 150, 150, 0.5));
+}
+
+#projects .bottom__diagonal {
+    background-color: var(--pink);
 }
 
 .projects__info {
@@ -329,7 +360,7 @@ body {
     width: 200px;
     object-fit: contain;
     overflow: hidden;
-    border: 4px white solid;
+    border: 4px rgba(150, 150, 150, 0.2) solid;
     padding: 8px;
     justify-self: center;
 }
@@ -360,36 +391,140 @@ body {
     text-decoration: underline;
 }
 
+/* ---Plants--------------------- */
+
+#plants {
+    scroll-margin-top: 66px;
+    grid-column: 1;
+    grid-row: 6/9;
+    z-index: 2;
+    filter: drop-shadow(0 2px 2px rgba(150, 150, 150, 0.5));
+}
+
+#plants .bottom__diagonal {
+    background-color: var(--pink-med);
+}
+
+.plant {
+    height: 250px;
+    width: 250px;
+    /* background-color: teal; */
+    z-index: 1;
+}
+
+.plants__container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.plant > img {
+    height: 100%;
+}
+
+#hedgehog {
+    position: absolute;
+    bottom: 8%;
+    left: 10%;
+    height: 64px;
+    image-rendering: pixelated;
+    animation-name: hedgehog_flip;
+    animation-duration: 12s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    /* z-index: 0; */
+    animation-play-state: paused;
+}
+
+#hedgehog__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    animation-name: hedgehog_run;
+    animation-duration: 12s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+} 
+
+#monstera {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.plants__HBar {
+    background-color: white;
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100px;
+}
+
 /* ---Contact--------------------- */
 
 #contact {
     scroll-margin-top: 96px;
     position: relative;
     grid-column: 1;
-    grid-row: 6/8;
+    grid-row: 8/10;
+    background-color: var(--pink-darkest);
+    /* min-height: calc(100vh - 477px); */
 }
 
 #contact .diagonal {
-    background-color: var(--pink-darkest);
-    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
+    display: grid;
+    grid-template-columns: 6fr 5fr;
+    grid-template-columns: 1fr auto;
 }
 
 .contact__content {
-    display: flex;
-    flex-direction: column;
+    /* display: grid;
     width: 100%;
+    padding-top: calc(2 * var(--diagonal) + 2rem);
+    gap: 10%; */
+    /* max-width: var(--desktop-width); */
+    /* width: 100%; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    padding: 5rem;
     padding-top: calc(2 * var(--diagonal) + 2rem);
 }
 
-.contact__content ul {
+#contact ul {
     list-style: none;
+}
+
+.contact__left {
+    position: relative;
+    filter: drop-shadow(2px 0 2px rgba(150, 150, 150, 0.5));
+    z-index: 1;
+    background-color: var(--pink-darkest);
+    padding-right: 15rem;
+}
+
+.contact__right {
+    position: relative;
+    background-color: var(--pink);
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .bottom__toTop {
     padding: 1rem;
-    margin-top: 1rem;
-    align-self: flex-end;
-    background-color: whitesmoke;
+    margin-top: auto;
+    margin-left: auto;
+    /* align-self: flex-end;
+    justify-self: flex-end; */
+    background-color: goldenrod;
 }
 
 /* ---MODAL------------------------- */
@@ -479,4 +614,74 @@ body {
         position: static;
         width: 100%;
     }
+}
+
+
+/* #backgroundFlowers {
+    background-image: url(https://cdn.shopify.com/s/files/1/1415/0728/files/download_1_c2914c8e-9402-4fdf-814d-f4b0c74af7d0.jpg?v=1627377031);
+    background-position: center;
+    background-size: 25%;
+    transform: translateZ(-200px) scale(2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    perspective: 100px;
+} */
+@keyframes hedgehog_flip {
+    0% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(0deg);
+    }
+    45% {
+        transform: rotate(720deg);
+    }
+    46% {
+        transform: rotate(0deg);
+        transform: scaleX(-1);
+    }
+    94% {
+        transform: scaleX(-1);
+    }
+    95% {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes hedgehog_run {
+    0% {
+        transform: translateX(0%);
+    }
+    10% {
+        transform: translateX(5%);
+    }
+    15% {
+        transform: translateX(5%);
+    }
+    17% {
+        transform: translateX(0%);
+    }
+    35% {
+        transform: translateX(0%) translateY(0%);
+    }
+    40% {
+        transform: translateX(39%) translateY(-20%);
+    }
+    45% {
+        transform: translateX(78%) translateY(0%);
+    }
+    80% {
+        transform: translateX(78%);
+    }
+    94% {
+        transform: translateX(0%);
+    }
+    
 }

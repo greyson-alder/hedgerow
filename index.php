@@ -53,46 +53,52 @@
             <ul class="nav__list">
                 <li class="nav__item"><a href="#bio">Me</a></li>
                 <li class="nav__item"><a href="#projects">Gallery</a></li>
-                <li class="nav__item"><a href="#contact">Contact</a></li>
+                <li class="nav__item"><a href="#plants">Contact</a></li>
             </ul>
         </nav>
     </header>
+    
 
-    <div class="contentGrid">
+    <!-- <div id="backgroundFlowers"></div> -->
+
+
+    <div id="contentGrid">
 
         <section id="primary">
-            <div id="imageGrid__container">
-                <section id="imageGrid">
+            <div class="bottom__diagonal">
+                <div id="imageGrid__container">
+                    <section id="imageGrid">
 
-                    <article id="infoBox" class='box' style="
-                        --grid-column: <?= rand(2, 8) ?>;
-                        --grid-row: <?= rand(2, 6) ?>;
-                    ">
-                        <img class='box__img' src='./main.jpg'>
-                        <h1>Hedgerow</h1>
-                    </article>
+                        <article id="infoBox" class='box' style="
+                            --grid-column: <?= rand(2, 8) ?>;
+                            --grid-row: <?= rand(2, 6) ?>;
+                        ">
+                            <img class='box__img' src='./main.jpg'>
+                            <h1>Hedgerow</h1>
+                        </article>
 
-                    <?php
-                    for ($i = 0; $i < 86; $i++) {
-                        $chanceInt = rand(1, 100);
-                        $white = rand(1, 100);
-                        $chanceHidden = rand(1, 100);
-                        echo "<article class='box", ($chanceInt < 20) ? " twoByTwo" : "", ($chanceHidden < 30) ? " hidden" : "",
-                        "'> 
-                                <img 
-                                    class='box__img' 
-                                    src='" . grabImage($images[$i], "w_320") . "'
-                                    style='--fade-delay: " . random_int(1, 400) / 100 . "'
-                                />
-                            </article>";
-                    } ?>
-                </section>
+                        <?php
+                        for ($i = 0; $i < 86; $i++) {
+                            $chanceInt = rand(1, 100);
+                            $white = rand(1, 100);
+                            $chanceHidden = rand(1, 100);
+                            echo "<article class='box", ($chanceInt < 20) ? " twoByTwo" : "", ($chanceHidden < 30) ? " hidden" : "",
+                            "'> 
+                                    <img 
+                                        class='box__img' 
+                                        src='" . grabImage($images[$i], "w_320") . "'
+                                        style='--fade-delay: " . random_int(1, 400) / 100 . "'
+                                    />
+                                </article>";
+                        } ?>
+                    </section>
+                </div>
             </div>
         </section>
 
 
         <section id="bio">
-            <div class="diagonal">
+            <div class="bottom__diagonal">
                 <article class="bio__content content flex_row">
                     <div class="bio__left">
                         <img src="./images/self.png" />
@@ -120,50 +126,74 @@
 
 
         <section id="projects">
-            <article class="projects__content content">
-                <div class="projects__photos">
-                    <div class="projects__info">
-                        <h2>Gallery</h2>
+            <div class="bottom__diagonal">
+                <article class="projects__content content">
+                    <div class="projects__photos">
+                        <div class="projects__info">
+                            <h2>Gallery</h2>
+                        </div>
+                        <div id="photos__container">
+                            <?php
+                            for ($i = 0; $i < $photosNumber; $i++) {
+                                echo
+                                '<button class="projects__item" data-fullscale="' . grabImage($images[$i], "") . '">
+                                    <img 
+                                        class="project__image" 
+                                        src="' . grabImage($images[$i], "w_320") . '" 
+                                    />
+                                </button>';
+                            } ?>
+                            <button class="projects__item" id="load_more">Load more images</button>
+                        </div>
                     </div>
-                    <div id="photos__container">
-                        <?php
-                        for ($i = 0; $i < $photosNumber; $i++) {
-                            echo
-                            '<button class="projects__item" data-fullscale="' . grabImage($images[$i], "") . '">
-                                <img 
-                                    class="project__image" 
-                                    src="' . grabImage($images[$i], "w_320") . '" 
-                                />
-                            </button>';
-                        } ?>
-                        <button class="projects__item" id="load_more">Load more images</button>
+                </article>
+            </div>
+        </section>
+
+
+        <section id="plants">
+            <div class="bottom__diagonal">
+                <div class="content">
+                    <div class="plants__container">
+                        <button class="plant" id="monstera"><img src="./pixels/monstera_colour.svg"/></button>
+                        <div class="plant"><img src="./pixels/potStack_colour.svg"/></div>
+                        <div class="plant"><img src="./pixels/zzPlant_colour.svg"/></div>
+                        <div class="plants__HBar"></div>
+                        <div id="hedgehog__container">
+                            <img id="hedgehog" src="pixels/hedgehog.png"/>
+                        </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </section>
 
 
         <section id="contact">
             <div class="diagonal">
-                <div class="contact__content content">
-                    <h2>Why <i>"Hedgerow"?</i></h2>
-                    <p>Having grown up in the Highlands in Scotland surrounded by environmental initiatives like the Cairngorn National Park Junior Ranger program and EcoSchools, the natural environment is at the core of everything I do.<br/>Did you know that the vast majority of British birds find their home in hedgerows about the country and yet, largely due to the industrialisation of farming across the last century, we are rapidly losing our hedges?</p>
-                    <h2 class="margin-top">Quick note on my name</h2>
-                    <p>I have recently moved away from using my given name <b>Iain Sandison</b> purely due to personal preference. Nothing else has changed and I'm still close with my family</p>
-                    <h2 class="margin-top">Contact & Additional Links</h2>
-                    <ul class="contact__otherProjects">
-                        <li class="externalLink"><a href="https://codepen.io/iain-sandison">CodePen</a></li>
-                        <li class="externalLink"><a href="https://github.com/greyson-alder">GitHub</a></li>
-                    </ul>
-                    <h3 class="margin-top">
-                        The easiest way to contact me is via email or LinkedIn:
-                    </h3>
-                    <ul class="contact__links">
-                        <li class="contact__email externalLink"><a href="mailto:iain.sandison.mousa@gmail.com">iain.sandison.mousa@gmail.com</a></li>
-                        <li class="contact__linkedIn externalLink"><a href="https://www.linkedin.com/in/iain-sandison/">LinkedIn</a></li>
-                    </ul>
-                    <a href="#" class="bottom__toTop">Back to top</a>
-                </div>
+                <!-- <div class="contact__content "> -->
+                    <div class="contact__left contact__content">
+                        <h2>Why <i>"Hedgerow"?</i></h2>
+                        <p>Having grown up in the Highlands in Scotland surrounded by environmental initiatives like the Cairngorn National Park Junior Ranger program and EcoSchools, the natural environment is at the core of everything I do.<br/><br/>Did you know that the vast majority of British birds find their home in hedgerows about the country and yet, largely due to the industrialisation of farming across the last century, we are rapidly losing our hedges?</p>
+                        <h2 class="margin-top">Quick note on my name</h2>
+                        <p>I have recently moved away from using my given name <b>Iain Sandison</b> purely due to personal preference. Nothing else has changed and I'm still close with my family</p>
+                    </div>
+                    <div class="contact__right contact__content">
+                        <h2>Contact & Additional Links</h2>
+                        <ul class="contact__otherProjects">
+                            <li class="externalLink"><a href="https://codepen.io/iain-sandison">CodePen</a></li>
+                            <li class="externalLink"><a href="https://github.com/greyson-alder">GitHub</a></li>
+                        </ul>
+                        <h3 class="margin-top">
+                            The easiest way to contact me is via email or LinkedIn:
+                        </h3>
+                        <ul class="contact__links">
+                            <li class="contact__email externalLink"><a href="mailto:iain.sandison.mousa@gmail.com">iain.sandison.mousa@gmail.com</a></li>
+                            <li class="contact__linkedIn externalLink"><a href="https://www.linkedin.com/in/iain-sandison/">LinkedIn</a></li>
+                        </ul>
+                        <a href="#" class="bottom__toTop">Back to top</a>
+                    </div>
+                    <div class="contact__bottom"></div>
+                <!-- </div> -->
             </div>
         </section>
 

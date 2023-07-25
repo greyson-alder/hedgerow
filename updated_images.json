@@ -346,21 +346,6 @@
             "secure_url": "https://res.cloudinary.com/dvbiqses3/image/upload/v1689174608/hedgerow/IMG-20230522-WA0007-01e_nlpvow.jpg"
         },
         {
-            "asset_id": "942ec7162a029e60bb6f1b3e43989295",
-            "public_id": "hedgerow/IMG-20230611-WA0000e_zv71rz",
-            "format": "jpg",
-            "version": 1689174608,
-            "resource_type": "image",
-            "type": "upload",
-            "created_at": "2023-07-12T15:10:08Z",
-            "bytes": 346551,
-            "width": 1407,
-            "height": 1919,
-            "folder": "hedgerow",
-            "url": "http://res.cloudinary.com/dvbiqses3/image/upload/v1689174608/hedgerow/IMG-20230611-WA0000e_zv71rz.jpg",
-            "secure_url": "https://res.cloudinary.com/dvbiqses3/image/upload/v1689174608/hedgerow/IMG-20230611-WA0000e_zv71rz.jpg"
-        },
-        {
             "asset_id": "d6b77dc7add9da506430c14f5cad9785",
             "public_id": "hedgerow/IMG_20230508_130922_kdf2yd",
             "format": "jpg",
