@@ -2,7 +2,7 @@
     <div class="bottom__diagonal">
         <article class="bio__content content flex_row">
             <div class="bio__left">
-                <img src="/images/self.png" />
+                <img src="/pixels/self.png" />
             </div>
             <div class="bio__right">
                 <h2>Hello!</h2>
