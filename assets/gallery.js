@@ -1,13 +1,21 @@
 // GALLERY SECTION INCLUDING MODALS
 
 const gallery = () => {
-
     const imagesJSON = window.allImages;
 
     function grabImage(index, params) {
         const selectedImage = imagesJSON["resources"][index];
-        return "https://res.cloudinary.com/dvbiqses3/image/upload" + (params ? "/" : "") + params + "/v" + selectedImage["version"] + "/" + selectedImage["public_id"] + ".jpg";
-      }
+        return (
+            "https://res.cloudinary.com/dvbiqses3/image/upload" +
+            (params ? "/" : "") +
+            params +
+            "/v" +
+            selectedImage["version"] +
+            "/" +
+            selectedImage["public_id"] +
+            ".jpg"
+        );
+    }
 
     const projectImages = document.getElementsByClassName("projects__item");
     const loadMorePhotos = document.getElementById("load_more");
@@ -45,7 +53,6 @@ const gallery = () => {
 
         photoBtn.addEventListener("click", (e) => {
             const imageURL = photoBtn.getAttribute("data-fullscale");
-            // console.log(imageURL);
             createAndAddModal(imageURL, photoBtn.getBoundingClientRect());
         });
 
@@ -72,14 +79,12 @@ const gallery = () => {
     let previousFocusedElement;
 
     function createAndAddModal(imageURL, clickedElement) {
-
         previousFocusedElement = document.activeElement;
 
         const modalImage = document.createElement("img");
         const selectImage = imagesJSON["resources"].findIndex(
             (image) => image.secure_url == imageURL
         );
-        // const selectImageFullWidth = imagesJSON["resources"][selectImage].width;
         modalImage.className = "modal__image";
         modalImage.setAttribute("src", imageURL);
         modalImage.setAttribute(
@@ -91,11 +96,6 @@ const gallery = () => {
   `
         );
         modalInner.appendChild(modalImage);
-        const imageSize = modalImage.getBoundingClientRect();
-        // console.log(imageSize);
-
-        // scale(`+ clickedElement.width +`
-        // transform: translate(`+ (clickedElement.x - clickedElement.width) +`px,` + (clickedElement.y - clickedElement.height/2) +`px));
 
         const closeModalButton = document.createElement("button");
         closeModalButton.innerHTML = `<img src="/pixels/x-square.svg" width="32" height="32" alt="Close"/>`;
@@ -111,14 +111,12 @@ const gallery = () => {
     function modalClose() {
         photoModal.setAttribute("hidden", null);
         modalInner.innerHTML = "";
-        console.log(photoModal);
-        if(previousFocusedElement) {
+        if (previousFocusedElement) {
             previousFocusedElement.focus();
-        } 
+        }
     }
 
     photoModal.addEventListener("click", modalClose);
-
 };
 
 export default gallery;
