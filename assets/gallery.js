@@ -47,7 +47,7 @@ const gallery = () => {
         const photoImage = document.createElement("img");
         photoImage.className = "project__image";
         photoImage.setAttribute("src", grabImage(index, "w_320"));
-        photoBtn.setAttribute("data-fullscale", grabImage(index, ""));
+        photoBtn.setAttribute("data-fullscale", grabImage(index, "w_1800"));
 
         photoBtn.appendChild(photoImage);
 
