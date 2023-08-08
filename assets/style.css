@@ -469,6 +469,10 @@ body {
     font-weight: bold;
 }
 
+.contact__email {
+    word-break: break-all;
+}
+
 .margin-top {
     margin-top: 1rem;
 }
