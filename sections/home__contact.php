@@ -4,8 +4,8 @@
             <div class="contact__left__max">
                 <h2>Why <i>"Hedgerow"?</i></h2>
                 <p>Having grown up in the Highlands in Scotland surrounded by environmental initiatives like the Cairngorm National Park Junior Ranger program and EcoSchools, the natural environment is at the core of everything I do.<br/><br/>Did you know that the vast majority of British birds find their home in hedgerows about the country and yet, largely due to the industrialisation of farming across the last century, we are rapidly losing our hedges?</p>
-                <h2 class="margin-top">Quick note on my name</h2>
-                <p>I have recently moved away from using my given name <b>Iain Sandison</b> purely due to personal preference. Nothing else has changed and I'm still close with my family</p>
+                <!-- <h2 class="margin-top">Quick note on my name</h2>
+                <p>I have recently moved away from using my given name <b>Iain Sandison</b> purely due to personal preference. Nothing else has changed and I'm still close with my family</p> -->
             </div>
         </div>
         <div class="contact__right contact__content">

@@ -12,10 +12,10 @@
                 <h3>Proficiencies:</h3>
                 <ul>
                     <li>HTML, CSS & JavaScript</li>
-                    <li>Python, with Pandas & Numpy</li>
-                    <li>SQL, with postgreSQL & mySQL</li>
-                    <li>Data Analysis, with Pandas, Scikit & Excel</li>
-                    <li>Data Segmentation on Salesforce</li>
+                    <li>C#</li>
+                    <li>SQL</li>
+                    <li>Data Analysis</li>
+                    <li>Python</li>
                     <li>React & NextJS</li>
                     <li>PHP</li>
                     <li>Java, Spring (Boot)</li>
