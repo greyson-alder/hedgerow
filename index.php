@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap" rel="stylesheet">
 
     <script>
-        window.allImages = JSON.parse(`<?php echo $allImages; ?>`)
+        window.allImages = <?php echo json_encode($images); ?>
     </script>
 
     <meta name="author" content="Greyson Alder">

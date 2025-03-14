@@ -4,7 +4,7 @@ const gallery = () => {
     const imagesJSON = window.allImages;
 
     function grabImage(index, params) {
-        const selectedImage = imagesJSON["resources"][index];
+        const selectedImage = imagesJSON[index];
         return (
             "https://res.cloudinary.com/dvbiqses3/image/upload" +
             (params ? "/" : "") +
@@ -60,10 +60,10 @@ const gallery = () => {
 
     function addPhotoRow() {
         for (let i = 0; i < 5; i++) {
-            if (photoIndex < imagesJSON["resources"].length) {
+            if (photoIndex < imagesJSON.length) {
                 photoContainer.appendChild(createPhotoElement(photoIndex));
                 photoIndex += 1;
-                if (photoIndex == imagesJSON["resources"].length) {
+                if (photoIndex == imagesJSON.length) {
                     loadMorePhotos.toggleAttribute("hidden");
                     break;
                 }
@@ -81,7 +81,7 @@ const gallery = () => {
         previousFocusedElement = document.activeElement;
 
         const modalImage = document.createElement("img");
-        const selectImage = imagesJSON["resources"].findIndex(
+        const selectImage = imagesJSON.findIndex(
             (image) => image.secure_url == imageURL
         );
         modalImage.className = "modal__image";
