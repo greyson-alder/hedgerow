@@ -436,6 +436,7 @@ body {
     object-fit: cover;
     object-position: 65%;
     filter: saturate(0%) brightness(120%);
+    display: block;
 }
 
 
