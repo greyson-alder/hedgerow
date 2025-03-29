@@ -1,21 +1,6 @@
 {
     "resources": [
         {
-            "asset_id": "d8c7dfd2256fe398b878485f4b0a7d52",
-            "public_id": "hedgerow/pojtlat0irtzhrwglmcb",
-            "format": "jpg",
-            "version": 1730394263,
-            "resource_type": "image",
-            "type": "upload",
-            "created_at": "2024-10-31T17:04:23Z",
-            "bytes": 6326278,
-            "width": 3373,
-            "height": 4498,
-            "folder": "hedgerow",
-            "url": "http://res.cloudinary.com/dvbiqses3/image/upload/v1730394263/hedgerow/pojtlat0irtzhrwglmcb.jpg",
-            "secure_url": "https://res.cloudinary.com/dvbiqses3/image/upload/v1730394263/hedgerow/pojtlat0irtzhrwglmcb.jpg"
-        },
-        {
             "asset_id": "80ed726cef82dee6d394ab6fa82fc833",
             "public_id": "hedgerow/lldycyarvlqvrqiafkta",
             "format": "jpg",
