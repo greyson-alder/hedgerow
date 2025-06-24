@@ -21,7 +21,7 @@
                         <img 
                             class='box__img' 
                             src='" . grabImage($images[$i], "w_320") . "'
-                            style='--fade-delay: " . random_int(1, 400) / 100 . "'
+                            style='--fade-delay: " . random_int(1, 400) / 100 . ";'
                         />
                     </article>";
                 } ?>

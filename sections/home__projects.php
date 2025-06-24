@@ -16,7 +16,7 @@
                             />
                         </button>';
                     } ?>
-                    <button class="projects__item load_more" id="load_more">
+                    <button class="projects__item load_more" id="load_more" style="grid-column: 1 / -1">
                         <img src="/pixels/plus-circle.svg" width="48" height="48" alt="Load more images"/>
                     </button>
                 </div>

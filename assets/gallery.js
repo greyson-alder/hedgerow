@@ -41,7 +41,8 @@ const gallery = () => {
 
     function createPhotoElement(index) {
         const photoBtn = document.createElement("button");
-        photoBtn.className = "projects__item";
+        photoBtn.className = "projects__item project__item--added";
+        photoBtn.style.setProperty("--animation_delay", getRandomInt(10, 20)/10+"s")
 
         const photoImage = document.createElement("img");
         photoImage.className = "project__image";
@@ -54,6 +55,8 @@ const gallery = () => {
             const imageURL = photoBtn.getAttribute("data-fullscale");
             createAndAddModal(imageURL, photoBtn.getBoundingClientRect());
         });
+
+        photoBtn.addEventListener("animationend", (e) => {if (e.animationName != "load_more_images_opacity") return; photoBtn.classList.remove("project__item--added")})
 
         return photoBtn;
     }
@@ -117,5 +120,13 @@ const gallery = () => {
 
     photoModal.addEventListener("click", modalClose);
 };
+
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 export default gallery;
