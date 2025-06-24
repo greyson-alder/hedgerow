@@ -3,7 +3,7 @@
     $img_url = "https://images.unsplash.com/photo-1664513291148-4ff5b1d58566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx";
     $allImages = file_get_contents("updated_images.json");
     $images = json_decode($allImages, true)["resources"];
-    $photosNumber = 9;
+    $photosNumber = 10;
 
     shuffle($images);
 
