@@ -23,7 +23,7 @@ const gallery = () => {
     const photoModal = document.getElementById("photos__modal");
     const modalInner = document.getElementById("modal__inner");
 
-    const initialNumberPhotos = 9;
+    const initialNumberPhotos = 10;
     let photoIndex = initialNumberPhotos;
 
     // -- MODAL FUNCTIONALITY FOR INITIAL IMAGES
